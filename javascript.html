@@ -285,53 +285,43 @@ for(initialization in given array/object){
 <!--.................................................... STRING TO ARRAY CONVERSIONS..................................  -->
 
 // ways to convert string into array
-
-
-let str ="helloo world"
-
+let str="helloo world"
 // 1st way
 
-let arr = str.split("");
-console.log(arr)
+let arr=str.split("");
+console.log("arr :",arr)
 
-let arr1= str.split(" ")
-console.log(arr1)
+let arr1=str.split(" ");
+console.log("arr1 :",arr1)
 
 // 2nd way
 
-let arr2=[...str]
-console.log(arr2);
+let arr2 = [...str]
+console.log("arr2 :",arr2)
 
+//3rd way
 
-// 3rd way
+let arr3 = Object.assign([], str);
+console.log("arr3 :",arr3)
 
-let arr3=Object.assign([],str)
+// 4th way
 
-console.log(arr3)
+let arr4=[]
 
-// 4th way 
-
-let arr4= Array.from(str)
-
-console.log(arr4)
+for(let i of str ){
+    arr4.push(i)
+}
+console.log("arr4 :", arr4)
 
 // 5th way
-let arr5=[]
-for(let i of str){
-    arr5.push(i)
-}
-console.log(arr5)
-let arr51=[]
-for(let i=str.length-1; i>=0; i--){
-    arr51.push(str[i])
-}
-console.log(arr51)
 
-// 6th way
+let arr5= Array.from(str);
+console.log("arr5 :", arr5)
 
-let arr6=Array.prototype.slice.call(str)
+// 6th way 
 
-console.log(arr6)
+let arr6= Array.prototype.slice.call(str)
+console.log("arr6 :",arr6)
 
 <!-- ...................................................ARRAY MUTATOR METHODS............................................. -->
 <!--  array methods ? 
