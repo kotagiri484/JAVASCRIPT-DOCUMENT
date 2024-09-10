@@ -582,6 +582,34 @@ console.log(obj); //{name:"some one",age :23};
    console.log("immediate")
 })()
 
+
+<!--...........................................CALL , APPLY, BIND METHODS.................................  -->
+
+// call , apply and bind methods
+
+// call and apply both are immediate invoke functions , the difference between both call and apply are the way we pass arguments
+
+// bind is similar to call method but it's not immediate invoke function , we need to invoke the function
+
+let company1={
+    campus:"SEZ-UNIT",
+    company:"Infosys"
+}
+let company2={
+    campus:"Mind-space",
+    company:"TCS",
+}
+
+let companyName=function(location, block){
+    console.log(this.campus +" ," + this.company +", " + location + " , " + block)
+}
+companyName.call(company1,"Hyderabad",9 )
+companyName.apply(company2,["Hyderabad",12])
+
+let BindData=companyName.bind(company1,"Hyderabad",9 )
+
+BindData()
+
 <!--............................................ASYNCHRONOUS FUNCTIONS.................................... -->
 
   setTimeout ==> it will execute only once after delay time
