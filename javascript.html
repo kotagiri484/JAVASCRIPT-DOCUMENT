@@ -440,6 +440,61 @@ let obj ={
    isStudent:false
 }
 
+<!--...................................................ARRAY TO OBJECT CONVERSION...........................  -->
+
+// ways to convert array into an object
+let arr=["a","b","c","d"]
+
+// 1st way
+
+let obj1={...arr}
+console.log("obj1 :",obj1)
+
+// 2nd way
+
+let obj2=Object.assign({}, arr);
+console.log("obj2 :", obj2)
+
+// 3rd way
+let obj3 = arr.reduce((acc, curr, index)=>{
+   acc[index]=curr
+   return acc
+},{})
+console.log("obj3 :", obj3);
+
+// 4th way
+
+let obj4={}
+
+for(let element of arr){
+    if(obj4[element]){
+        obj4[element]++
+    }else{
+        obj4[element]=1
+    }
+}
+
+console.log("obj4 :", obj4)
+
+// 5th way
+
+let arr1=[["name","some one"],["age", 23]]
+
+let obj5= Object.fromEntries(arr1)
+console.log("obj5 :", obj5)
+
+
+// 6th way
+
+
+let obj6={}
+
+arr.forEach((item, index, self)=>{
+    return obj6[self[index]] = item
+})
+
+console.log("obj6 :", obj6)
+
 <!-- ...................................................OBJECTS METHODS ..................................... -->
 
 ==>  Object.keys()  ==> it will gives all the available keys in the object in array format
