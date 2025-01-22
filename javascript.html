@@ -746,5 +746,165 @@ let {name,age,person:gender} = obj;
 console.log(name);//"some"
 console.log(age);//23
 console.log(gender);//"male"
+------------------------------------------------------------------------------------------------------------------------
+ iterator methods ==> map, filter, find, reduce, some, every
+
+  => single dependency ==> map, filter, find, some, every
+  => double dependency ==> reduce
+
+==>  HOF [Higher Ordered Function] ==> HOF is a function , it will take function as an argument 
+                                   ==>function reusability
+
+  map ==> it's an higher order function , it will iterates each and every value  and it will returns each and every value in the array, it will creates brand new array
+  purpose of map ==> to print each and every value from the array, to manupulate/modify each and every value in the array
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------    
+  filter ==> it's an higher order function , it will iterates each and every value and based upon condition it will return all the values which are satisfied by the condition
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  find ==> it's an higher order function , it will iterates each and every value and based upon condition it will return initial value which is satisfied by the taken condition
+----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  some ==> it will iterates each and every value and based upon the condition it will gives true or false 
+   note : atleast one elemnet satisfies the condition then it will returns true if not it will gives false
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+   every ==> it will iterates each and every value and based upon the condition it will gives true or false 
+    note : if each and every elemnet  satisfies the condition then it will returns true if not it will gives false  
+ ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ 
+  reduce ==>  it's an higher order function , it will iterates each and every value and it always gives the single value, in reduce method it will accepts two arguments one is callback function and another one is dependency value
+
+    syntax==> arrayname.reduce((acc,curr, index, self)=>{},0)
+
+ ==> acc => it denotes second dependency
+ ==> curr ==> it denotes values
+
+  note ==> if you perform count operation second dependency is 0
+        //  ==> if you want data in array format second dependency is []
+        //  ==> if you want data in object format second dependency is {}
+        //  ==> by default it is 0
+  --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  indexOf ==> it will iterates each and every value, it will checks the index of elemenet , it will only gives first index of the element
+
+ let arr=[6,7,8,6,4,6,5,6,3,2]
+ let duplicate = [...new Set(arr)]
+ let duplicate=arr.filter((item, index, self)=>{
+     return self.indexOf(item)  === index
+ })
+
+  let result=arr.filter((item, index, self)=>{
+   return arr.indexOf(item)
+ })
+ console.log(duplicate)
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ lastIndexOf==> it will iterates each and every value,it will checks the index of elemenet , it will only gives last index of the element
+-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+  includes ==> it will iterates each and every value and if the element is there what ewe are looking in the array then it will gives true, otherwise it will gives false
+    
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ indexOf, lastIndexOf, includes
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+ forEach ==> it will iterates each and every value, this in not introduced in ES6 , this is introduced in older version of Ecma Script
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+ promise ==> it will handles asynchronous tasks and it will resolve callback hell issue
+
+let examplePromise=new Promise((pending, resolve, reject)=>{
+    let a="hello";
+    
+    if(a="hello"){
+         
+        setTimeout(()=>{
+           resolve("matched string")
+        },100)
+    }
+    else{
+        reject("rejected cause of misMatch  string")
+    }
+})
+examplePromise 
+.then((message)=> console.log(${message}))
+.catch((error)=> console.log(${error}))
+-----------------------------------------------------------------
+Example 2==>
+ const some = new Promise((pending, resolve, reject)=>{
+
+ })
+
+let some1=async()=>{
+    try{
+         let result= await fetch("")   
+    }
+catch{
+    console.log("unAuthorized")
+}
+}
+
+
+    let a=10;
+let some = new Promise((resolve, reject) =>{
+
+    if(a===10){
+        resolve("success")
+    }else{
+        reject("failure")
+    }
+} );
+
+some.then((s)=> console.log(s))
+.catch((i)=> consol.log(i))
+
+------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+==> async/await
+let getData =async()=>{
+    try{
+            let api = await fetch("https://jsonplaceholde.typicode.com/users")
+    let response = await api.json()
+    setData(response)
+    }
+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+==> callbackhell : to resolve callbackhell issue we're using promises[es6] or async/await[es7]
+
+ setTimeout(()=>{
+    ()=>{
+         ()=>{
+             ()=>{
+                 ()=>{
+                     ()=>{
+                        
+                     }
+                 }
+             }
+         }
+     }
+ });
+
+  to resolve callbackhell issue we're using promises[es6] or async/await[es7]
+
+{
+    "name":"xoms",
+    "msk"
+}
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------
+==> polyFills
+
+Array.prototype.combining= function (callback){
+    let result=[]
+    for(let i=0; i<this.length;i++){
+        if(callback(this[i],i,this)){
+             result.push(this[0])          <!-- this[0]=>for firstindex ,  this[this.length-1]=>for last index -->
+        }
+         return result   
+    }
+
+}
+
+let countAll=[1,2,3,4,5,6].combining((item)=>{
+    return item
+})
+console.log(countAll)
+---------------------------------------------------------------------------------------------------------------------------------------------------
+
+// promise.all()
+// promise.allSetteled()
+// promise.any()
+// promise.race()
 
 
